@@ -1,0 +1,19 @@
+.taskItem {
+  background-color: white;
+  display: flex;
+  align-items: center;
+
+  .iconButton {
+    background: none;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: auto;
+  }
+
+  .taskCheckbox {
+    margin: 23px 16px 23px 8px;
+  }
+}
