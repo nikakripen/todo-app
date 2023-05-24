@@ -1,10 +1,7 @@
-import Label from "../atoms/Label";
+import Text from "../atoms/Text";
 
-const Stat = () => {
-  const itemsLeft = 5;
-  return (
-    <Label style={{ color: "#9c9ca5" }} text={`${itemsLeft} items left`} />
-  );
+const Stat = ({itemsCount}) => {
+  return <Text text={`${itemsCount} items left`} />;
 };
 
 export default Stat;

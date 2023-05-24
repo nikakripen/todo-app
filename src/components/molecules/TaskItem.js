@@ -12,7 +12,7 @@ const TaskItem = ({ task }) => {
         className={taskCheckbox}
         name={`task-${task.id}`}
         value={task.checked}
-        text={task.text}
+        label={task.text}
       />
       <Button className={iconButton}>
         <CrossIcon />
