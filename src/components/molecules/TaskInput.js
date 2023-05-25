@@ -5,7 +5,6 @@ import styles from "./TaskInput.module.scss";
 const TaskInput = ({ onSubmitTask }) => {
   const [inputValue, setInputValue] = useState("");
   const handleKeyPress = (event) => {
-    console.log(event);
     if (event.key === "Enter") {
       onSubmitTask(inputValue);
       setInputValue("");

@@ -5,7 +5,6 @@ import { ReactComponent as CrossIcon } from "../../images/icon-cross.svg";
 import { useDispatch } from "react-redux";
 import { deleteTask, editTask } from "../../features/tasks/tasksSlice";
 const TaskItem = ({ task }) => {
-  console.log(task);
   const dispatch = useDispatch();
   const { taskItem, taskCheckbox, iconButton } = styles;
 

@@ -8,10 +8,15 @@ import { selectTasks } from "./../../features/tasks/tasksSlice";
 const TasksCard = ({ ...rest }) => {
   const taskList = useSelector(selectTasks);
   const [filterValue, setFilterValue] = useState(null);
-  const filteredTaskList = taskList.filter(t => filterValue === null || t.checked === filterValue);
+  const filteredTaskList = taskList.filter(
+    (t) => filterValue === null || t.checked === filterValue
+  );
   return (
     <div className={styles.card} {...rest}>
-      <TaskList tasksList={filteredTaskList} />
+      <TaskList
+        tasksList={filteredTaskList}
+        isDragDisabled={filterValue !== null}
+      />
       <Controls
         filterValue={filterValue}
         onFilterValueSet={(value) => setFilterValue(value)}
