@@ -4,25 +4,24 @@ import TaskInput from "../molecules/TaskInput";
 import Header from "../organisms/Header";
 import TasksCard from "../organisms/TasksCard";
 import styles from "./ToDoPage.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTasks } from "../../features/tasks/tasksSlice";
+import { addTask } from "../../features/tasks/tasksSlice";
 
 const ToDoPage = () => {
   const [newTaskText, setNewTaskText] = useState("");
-  const [taskList, setTaskList] = useState([]);
-
+  const taskList = useSelector(selectTasks);
+  const dispatch = useDispatch()
+  
   const handleAddTask = (text) => {
-    setTaskList([{id:  crypto.randomUUID(), checked: false, text }, ...taskList]);
+    dispatch(addTask({id:  crypto.randomUUID(), checked: false, text }));
   };
 
-  const handleRemoveTask = (taskId) => {
-    setTaskList(taskList.filter(t => t.id !== taskId));
-  } 
-
-  console.log(styles);
   return (
     <div className={styles.container}>
       <Header />
       <TaskInput onSubmitTask={handleAddTask} />
-      <TasksCard taskList={taskList} style={{ margin: "16px 0" }} onTaskDelete={handleRemoveTask} />
+      <TasksCard taskList={taskList} style={{ margin: "16px 0" }} />
       <div className={styles.footer}>
         <Text text="Drag and drop to reorder list" />
       </div>

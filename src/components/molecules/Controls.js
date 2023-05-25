@@ -1,14 +1,22 @@
 import Button from "../atoms/Button";
 import Stat from "./Stat";
 import styles from "./Controls.module.scss";
+import { deleteCompleted } from "../../features/tasks/tasksSlice";
+import { useDispatch } from "react-redux";
 
-const Controls = ({ itemsCount, filterValue, onFilterValueSet }) => {
+const Controls = ({ filterValue, onFilterValueSet }) => {
+  const dispatch = useDispatch();
+  const handleDeleteCompleted = () => {
+    dispatch(deleteCompleted())
+  };
+
   const filters = [
     { name: "All", value: null },
     { name: "Active", value: false },
     { name: "Completed", value: true },
   ].map((filter) => (
-    <Button key={filter.name}
+    <Button
+      key={filter.name}
       className={`${styles.filterButton} ${
         filterValue === filter.value ? styles.active : ""
       }`}
@@ -19,14 +27,13 @@ const Controls = ({ itemsCount, filterValue, onFilterValueSet }) => {
 
   return (
     <div className={styles.controls}>
-      <Stat itemsCount={itemsCount} />
-      <div className={styles.filters}>
-        {/* <Button className={`${styles.filterButton} ${}`} text="All" />
-        <Button className={styles.filterButton} text="Active" />
-        <Button className={styles.filterButton} text="Completed" /> */}
-        {filters}
-      </div>
-      <Button className={styles.filterButton} text="Clear Completed" />
+      <Stat />
+      <div className={styles.filters}>{filters}</div>
+      <Button
+        className={styles.filterButton}
+        text="Clear Completed"
+        onClick={handleDeleteCompleted}
+      />
     </div>
   );
 };
