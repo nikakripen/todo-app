@@ -26,6 +26,7 @@ const TaskList = ({ tasksList = [], isDragDisabled = false }) => {
     </Draggable>
   ));
   const handleDragEnd = ({ destination, source }) => {
+    if(destination && source && source.index !== destination.index) 
     dispatch(
       reorder({ startIndex: source.index, endIndex: destination.index })
     );
@@ -40,6 +41,7 @@ const TaskList = ({ tasksList = [], isDragDisabled = false }) => {
             className={styles.listContainer}
           >
             {taskItems}
+            {provided.placeholder}
           </ul>
         )}
       </Droppable>
