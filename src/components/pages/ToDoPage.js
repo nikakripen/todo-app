@@ -7,14 +7,17 @@ import styles from "./ToDoPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTasks } from "../../features/tasks/tasksSlice";
 import { addTask } from "../../features/tasks/tasksSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 const ToDoPage = () => {
   const [newTaskText, setNewTaskText] = useState("");
   const taskList = useSelector(selectTasks);
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   const handleAddTask = (text) => {
-    dispatch(addTask({id:  crypto.randomUUID(), checked: false, text }));
+    if (text) {
+      dispatch(addTask({ id: nanoid(), checked: false, text }));
+    }
   };
 
   return (
