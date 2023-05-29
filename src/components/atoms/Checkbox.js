@@ -1,10 +1,18 @@
+import classNames from "classnames";
 import styles from "./Checkbox.module.scss";
 
-const Checkbox = ({ label, name, value, className, text, ...rest }) => {
+const Checkbox = ({ label, name, value = false, className, onCheckedChange, ...rest }) => {
   return (
-    <div className={`${styles.toDoCheckbox} ${className}`}>
-      <input type="checkbox" name={name} id={name} value={value} />
-      <label for={name}>{text}</label>
+    <div className={classNames(styles.toDoCheckbox, className)}>
+      <input
+        type="checkbox"
+        name={name}
+        id={name}
+        checked={value}
+        onChange={onCheckedChange}
+        {...rest}
+      />
+      <label htmlFor={name}>{label}</label>
     </div>
   );
 };

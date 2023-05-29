@@ -1,9 +1,12 @@
-import Label from "../atoms/Label";
+import { useSelector } from "react-redux";
+import TextWrapper from "../atoms/TextWrapper";
 
 const Stat = () => {
-  const itemsLeft = 5;
+  const taskCount = useSelector(
+    (state) => state.tasks.filter((t) => !t.checked).length
+  );
   return (
-    <Label style={{ color: "#9c9ca5" }} text={`${itemsLeft} items left`} />
+    <TextWrapper text={`${taskCount} ${taskCount > 1 ? "items" : "item"} left`} />
   );
 };
 

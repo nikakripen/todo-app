@@ -44,6 +44,11 @@
       rgba(164, 24, 182, 1) 0%,
       rgba(0, 212, 255, 1) 100%
     );
+
+    +label {
+      color: #9c9ca5;
+      text-decoration: line-through;
+    }
   }
 
   input[type="checkbox"]:checked:after {
