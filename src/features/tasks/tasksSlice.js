@@ -19,21 +19,22 @@ export const tasksSlice = createSlice({
       });
     },
     deleteCompleted: (state) => {
-        return state.filter(task => !task.checked);
+      return state.filter((task) => !task.checked);
     },
     reorder: (state, action) => {
-      const {startIndex, endIndex} = action.payload;
+      const { startIndex, endIndex } = action.payload;
       const result = state.slice();
       const [removed] = result.splice(startIndex, 1);
       result.splice(endIndex, 0, removed);
-    
+
       return result;
-    }
+    },
   },
 });
 
-export const { addTask, deleteTask, editTask, deleteCompleted, reorder } = tasksSlice.actions;
+export const { addTask, deleteTask, editTask, deleteCompleted, reorder } =
+  tasksSlice.actions;
 
 export const selectTasks = (state) => state.tasks;
 
-export default tasksSlice.reducer
+export default tasksSlice.reducer;
