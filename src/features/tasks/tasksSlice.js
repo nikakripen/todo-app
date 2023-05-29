@@ -8,18 +8,18 @@ export const tasksSlice = createSlice({
       return [action.payload, ...state];
     },
     deleteTask: (state, action) => {
-      return state.filter((t) => t.id !== action.payload.id);
+      return state.filter((task) => task.id !== action.payload.id);
     },
     editTask: (state, action) => {
-      return state.map((t) => {
-        if (t.id === action.payload.id) {
+      return state.map((task) => {
+        if (task.id === action.payload.id) {
           return { ...action.payload };
         }
-        return t;
+        return task;
       });
     },
     deleteCompleted: (state) => {
-        return state.filter(t => !t.checked);
+        return state.filter(task => !task.checked);
     },
     reorder: (state, action) => {
       const {startIndex, endIndex} = action.payload;

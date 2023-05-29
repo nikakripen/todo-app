@@ -3,11 +3,12 @@ import Stat from "./Stat";
 import styles from "./Controls.module.scss";
 import { deleteCompleted } from "../../features/tasks/tasksSlice";
 import { useDispatch } from "react-redux";
+import classNames from "classnames";
 
 const Controls = ({ filterValue, onFilterValueSet }) => {
   const dispatch = useDispatch();
   const handleDeleteCompleted = () => {
-    dispatch(deleteCompleted())
+    dispatch(deleteCompleted());
   };
 
   const filters = [
@@ -17,9 +18,9 @@ const Controls = ({ filterValue, onFilterValueSet }) => {
   ].map((filter) => (
     <Button
       key={filter.name}
-      className={`${styles.filterButton} ${
-        filterValue === filter.value ? styles.active : ""
-      }`}
+      className={classNames(styles.filterButton, {
+        [styles.active]: filterValue === filter.value,
+      })}
       text={filter.name}
       onClick={() => onFilterValueSet(filter.value)}
     />
